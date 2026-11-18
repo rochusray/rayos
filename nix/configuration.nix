@@ -9,16 +9,10 @@
     ./bootloader/efi-grub.nix
 
     (import ./core/desktop.nix {
-      username = "Rochus";
-      hostname = "RochusPC";
-      encrypted = true;
       modules = [
         ./modules/ssh.nix
         ./modules/git.nix
-        (import ./modules/github.nix {
-          username = "RochusRay";
-          email = "rochusray@proton.me";
-        })
+        ./modules/github.nix
         (import ./modules/zed.nix {
           inherit lib;
           languages = [
@@ -32,9 +26,10 @@
         (import ./modules/hyfetch.nix {
           disks = [
             "/"
+            "/boot"
           ];
           # Get with "ip addr"
-          networkInterface = "enp8s0";
+          networkInterface = "$RAYOS_NETWORK_INTERFACE";
         })
         ./modules/librewolf.nix
       ];
