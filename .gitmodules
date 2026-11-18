@@ -1,0 +1,3 @@
+[submodule "bashdash"]
+	path = bashdash
+	url = https://github.com/morganism/bashdash.git
